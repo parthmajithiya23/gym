@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, } from "react-icons/fa";
 import logo2 from './assets/logo2.png';
-import footerMan from './assets/footerMan.png';
+import footerMan from "./assets/footerman.png";
 import './App.css';
 import { Link } from "react-router-dom";
 
