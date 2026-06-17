@@ -1,0 +1,124 @@
+/* Accessories Section */
+
+.accessories-section {
+    background: #0d0d0d;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.accessories-section h2 {
+    color: #ff7b00;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.accessories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.accessory-card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 123, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.accessory-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 123, 0, 0.4);
+}
+
+.accessory-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.accessory-card h3 {
+    color: white;
+    padding: 18px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.accessory-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    .accessories-section h2 {
+        font-size: 2rem;
+    }
+
+    .accessory-card img {
+        height: 180px;
+    }
+
+    .accessory-card h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Facilities */
+/* Facilities Section */
+
+.facilities-section {
+    background: #0d0d0d;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.facilities-section h2 {
+    color: #ff7b00;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.facilities-section ul {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.facilities-section li {
+    background: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    box-shadow: 0 0 15px rgba(255, 123, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.facilities-section li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(255, 123, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .facilities-section h2 {
+        font-size: 2rem;
+    }
+
+    .facilities-section li {
+        font-size: 1rem;
+        padding: 16px;
+    }
+}

@@ -1,0 +1,355 @@
+/* ABOUT  */
+.about-page {
+    background: #111;
+    color: white;
+}
+
+.about-hero {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, .7),
+            rgba(0, 0, 0, .7)),
+        url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438");
+    background-size: cover;
+    background-position: center;
+}
+
+.about-hero h1 {
+    font-size: 4rem;
+    color: #f97316;
+}
+
+.about-hero p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    color: #f97316;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.about-text p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.mission-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: #000000;
+    /* margin: 10px auto; */
+
+}
+
+.mission-section h2 {
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.stat-card {
+    background: #1a1a1a;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.stat-card h3 {
+    color: #f97316;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+@media(max-width:768px) {
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media(max-width:500px) {
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* OUR STORY */
+
+.story-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 100px 20px;
+    text-align: center;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)),
+        url("/story.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* border-radius: 20px; */
+}
+
+.story-section h2 {
+    font-size: 2.8rem;
+    color: #f97316;
+    margin-bottom: 30px;
+}
+
+.story-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+
+/* WHY CHOOSE US */
+
+.why-section {
+    padding: 80px 20px;
+    background: #1a1a1a;
+}
+
+.why-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #f97316;
+    margin-bottom: 50px;
+}
+
+.why-cards {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.why-card {
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+    border: 1px solid #222;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    border-color: #f97316;
+}
+
+.why-card h3 {
+    color: #f97316;
+    margin-bottom: 15px;
+}
+
+.why-card p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+
+/* OUR VALUES */
+
+.values-section {
+    padding: 80px 20px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7)),
+        url("/gain.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.values-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #f97316;
+    margin-bottom: 50px;
+}
+
+.values-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.values-grid div {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.values-grid h3 {
+    color: #f97316;
+    margin-bottom: 15px;
+}
+
+.values-grid p {
+    color: #ccc;
+}
+
+
+/* ACHIEVEMENTS */
+
+.achievement-section {
+    padding: 80px 20px;
+    background: #1a1a1a;
+}
+
+.achievement-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #f97316;
+    margin-bottom: 50px;
+}
+
+.achievement-cards {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.achievement-cards div {
+    background: #111;
+    padding: 35px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.achievement-cards div:hover {
+    transform: scale(1.05);
+}
+
+.achievement-cards h3 {
+    color: #f97316;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.achievement-cards p {
+    color: #ddd;
+}
+
+
+/* QUOTE SECTION */
+
+.quote-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, .8),
+            rgba(0, 0, 0, .8));
+}
+
+.quote-section h2 {
+    max-width: 900px;
+    margin: auto;
+    font-size: 2.5rem;
+    color: #fff;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.quote-section p {
+    margin-top: 20px;
+    color: #f97316;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+    .why-cards,
+    .values-grid,
+    .achievement-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .story-section h2,
+    .why-section h2,
+    .values-section h2,
+    .achievement-section h2 {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .why-cards,
+    .values-grid,
+    .achievement-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .story-section h2,
+    .why-section h2,
+    .values-section h2,
+    .achievement-section h2 {
+        font-size: 2rem;
+    }
+}
