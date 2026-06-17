@@ -241,7 +241,7 @@ function Home() {
                                 data-aos-delay="500"
                             >
                                 <h3>Your BMI: {bmi}</h3>
-                                <p>Status: {status}</p>
+                               <p className={status.toLowerCase()}>{status}</p>
                             </div>
                         </>
                     )}

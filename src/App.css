@@ -530,22 +530,20 @@ body {
     font-weight: 600;
 }
 
-/* Status Colors */
-
-.result p:has-text("Underweight") {
-    color: #3498db;
+.underweight {
+  color: #3498db;
 }
 
-.result p:has-text("Normal") {
-    color: #2ecc71;
+.normal {
+  color: #2ecc71;
 }
 
-.result p:has-text("Overweight") {
-    color: #f39c12;
+.overweight {
+  color: #f39c12;
 }
 
-.result p:has-text("Obese") {
-    color: #e74c3c;
+.obese {
+  color: #e74c3c;
 }
 
 /* Responsive */
