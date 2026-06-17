@@ -19,14 +19,16 @@ function Navbar() {
                 </div>
             </div>
 
-             {/* Menu */}
+            {/* Menu */}
             <div className={menuOpen ? "links active" : "links"}>
-                <a className="link" href="/">Home</a>
-                <a className="link" href="/about">About</a>
-                <a className="link" href="/gallery">Gallary</a>
-                <a className="link" href="/accessories">Accessories</a>
-                <a className="link" href="/">Services</a>
-                <a className="link" href="/">Contact</a>
+
+                <Link className="link" to="/">Home</Link>
+                <Link className="link" to="/about">About</Link>
+                <Link className="link" to="/gallery">Gallery</Link>
+                <Link className="link" to="/accessories">Accessories</Link>
+                <Link className="link" to="/">Services</Link>
+                <Link className="link" to="/">Contact</Link>
+
             </div>
 
             <button className="nav-btn">JOIN NOW</button>
