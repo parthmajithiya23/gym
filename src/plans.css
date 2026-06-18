@@ -1,0 +1,155 @@
+.plans-section {
+  min-height: 100vh;
+  padding: 120px 5%;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.plans-section h1 {
+  font-size: 3rem;
+  color: orange;
+}
+
+.plans-section p {
+  margin: 15px 0 50px;
+}
+
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.plan-card {
+  background: #1a1a1a;
+  border: 2px solid orange;
+  border-radius: 15px;
+  padding: 30px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+}
+
+.plan-card h2 {
+  color: orange;
+}
+.duration {
+  color: orange;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.plan-card h3 {
+  font-size: 2rem;
+  margin: 15px 0;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.plan-card li {
+  margin: 10px 0;
+  color: #ddd;
+}
+
+.plan-card button {
+  background: orange;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+   margin-top: auto;
+}
+.popular-badge {
+  display: inline-block;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.plan-card button:hover {
+  background: white;
+}
+/* TABLET */
+@media (max-width: 768px) {
+  .plans-section {
+    padding: 100px 20px 50px;
+  }
+
+  .plans-section h1 {
+    font-size: 2.3rem;
+  }
+
+  .plans-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .plan-card {
+    padding: 25px;
+  }
+
+  .plan-card h3 {
+    font-size: 1.8rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .plans-section {
+    padding: 90px 15px 40px;
+  }
+
+  .plans-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .plans-section p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+
+  .plans-container {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card {
+    padding: 20px;
+  }
+
+  .plan-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .plan-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .plan-card li {
+    font-size: 0.9rem;
+  }
+
+  .plan-card button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .popular-badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}

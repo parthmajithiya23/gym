@@ -15,9 +15,9 @@ import trainer1 from './assets/trainer1.jpg';
 import trainer2 from './assets/trainer2.jpg';
 import trainer3 from './assets/trainer3.webp';
 import beforeAfter1 from './assets/beforeAfter1.webp';
-import beforeAfter2 from './assets/beforeAfter2.jpg';
+import beforeAfter2 from './assets/beforeAfter2.png';
 import beforeAfter3 from './assets/beforeAfter3.jpg';
-import beforeAfter4 from './assets/beforeAfter4.jpeg';
+import beforeAfter4 from './assets/beforeAfter4.png';
 import gymImage from './assets/result.jpeg';
 import GaugeComponent from "react-gauge-component";
 
@@ -457,125 +457,153 @@ function Home() {
 
             {/* flexible membership plans */}
 
-            <section className="membership-section" data-aos="fade-up">
-                <h2 className="section-title" data-aos="fade-down">
-                    FLEXIBLE <span>MEMBERSHIP PLANS</span>
+          <section className="membership-plans-section" data-aos="fade-up">
+    <h2 className="section-title" data-aos="fade-down">
+        FLEXIBLE <span>MEMBERSHIP PLANS</span>
+    </h2>
+
+    <div className="membership-container">
+
+        {/* Left Side */}
+        <div className="membership-left" data-aos="fade-right">
+
+            <div className="membership-plans">
+
+                <div
+                    className="membership-plan-card"
+                    data-aos="zoom-in"
+                    data-aos-delay="100"
+                >
+                    <h3>MONTHLY PLAN</h3>
+                    <h2>₹999 <span>/month</span></h2>
+
+                    <ul>
+                        <li>Full Gym Access</li>
+                        <li>Basic Trainer Support</li>
+                        <li>Diet Guidance</li>
+                        <li>Locker Facility</li>
+                    </ul>
+
+                    <button>CHOOSE PLAN</button>
+                </div>
+
+                <div
+                    className="membership-plan-card featured"
+                    data-aos="zoom-in"
+                    data-aos-delay="200"
+                >
+                    <div className="badge">BEST VALUE</div>
+
+                    <h3>QUARTERLY PLAN</h3>
+                    <h2>₹2499 <span>/3 months</span></h2>
+
+                    <ul>
+                        <li>Full Gym Access</li>
+                        <li>Personal Trainer (2 Sessions)</li>
+                        <li>Diet Guidance</li>
+                        <li>Locker Facility</li>
+                    </ul>
+
+                    <button>CHOOSE PLAN</button>
+                </div>
+
+                <div
+                    className="membership-plan-card"
+                    data-aos="zoom-in"
+                    data-aos-delay="300"
+                >
+                    <h3>ANNUAL PLAN</h3>
+                    <h2>₹8999 <span>/year</span></h2>
+
+                    <ul>
+                        <li>Full Gym Access</li>
+                        <li>Personal Trainer (8 Sessions)</li>
+                        <li>Diet Guidance</li>
+                        <li>Locker Facility</li>
+                        <li>Free Body Assessment</li>
+                    </ul>
+
+                    <button>CHOOSE PLAN</button>
+                </div>
+
+            </div>
+
+            {/* Testimonials */}
+            <div
+                className="testimonials"
+                data-aos="fade-up"
+                data-aos-delay="400"
+            >
+                <h2>
+                    WHAT OUR <span>MEMBERS SAY</span>
                 </h2>
 
-                <div className="membership-container">
+                <div className="testimonial-cards">
 
-                    {/* Left Side */}
-                    <div className="plans-section" data-aos="fade-right">
-
-                        <div className="plans">
-
-                            <div className="plan-card" data-aos="zoom-in"
-                                data-aos-delay="100">
-                                <h3>MONTHLY PLAN</h3>
-                                <h2>₹999 <span>/month</span></h2>
-
-                                <ul>
-                                    <li>Full Gym Access</li>
-                                    <li>Basic Trainer Support</li>
-                                    <li>Diet Guidance</li>
-                                    <li>Locker Facility</li>
-                                </ul>
-
-                                <button>CHOOSE PLAN</button>
-                            </div>
-
-                            <div className="plan-card featured" data-aos="zoom-in"
-                                data-aos-delay="200">
-                                <div className="badge">BEST VALUE</div>
-
-                                <h3>QUARTERLY PLAN</h3>
-                                <h2>₹2499 <span>/3 months</span></h2>
-
-                                <ul>
-                                    <li>Full Gym Access</li>
-                                    <li>Personal Trainer (2 Sessions)</li>
-                                    <li>Diet Guidance</li>
-                                    <li>Locker Facility</li>
-                                </ul>
-
-                                <button >CHOOSE PLAN</button>
-                            </div>
-
-                            <div className="plan-card">
-                                <h3>ANNUAL PLAN</h3>
-                                <h2>₹8999 <span>/year</span></h2>
-
-                                <ul>
-                                    <li>Full Gym Access</li>
-                                    <li>Personal Trainer (8 Sessions)</li>
-                                    <li>Diet Guidance</li>
-                                    <li>Locker Facility</li>
-                                    <li>Free Body Assessment</li>
-                                </ul>
-
-                                <button>CHOOSE PLAN</button>
-                            </div>
-
-                        </div>
-
-                        {/* Testimonials */}
-                        <div className="testimonials" data-aos="fade-up"
-                            data-aos-delay="400">
-                            <h2>
-                                WHAT OUR <span>MEMBERS SAY</span>
-                            </h2>
-
-                            <div className="testimonial-cards">
-
-                                <div className="testimonial" data-aos="flip-up"
-                                    data-aos-delay="100">
-                                    <p>★★★★★</p>
-                                    <blockquote>
-                                        Best gym environment and supportive trainers!
-                                    </blockquote>
-                                    <span>– Raj Patel</span>
-                                </div>
-
-                                <div className="testimonial" data-aos="flip-up"
-                                    data-aos-delay="200">
-                                    <p>★★★★★</p>
-                                    <blockquote>
-                                        Modern equipment and excellent workout programs.
-                                    </blockquote>
-                                    <span>– Neha Shah</span>
-                                </div>
-
-                                <div className="testimonial" data-aos="flip-up"
-                                    data-aos-delay="300">
-                                    <p>★★★★★</p>
-                                    <blockquote>
-                                        Perfect place to stay motivated and fit.
-                                    </blockquote>
-                                    <span>– Amit Mehta</span>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    <div
+                        className="testimonial"
+                        data-aos="flip-up"
+                        data-aos-delay="100"
+                    >
+                        <p>★★★★★</p>
+                        <blockquote>
+                            Best gym environment and supportive trainers!
+                        </blockquote>
+                        <span>– Raj Patel</span>
                     </div>
 
-                    {/* Right Side */}
-                    <div className="images-section" data-aos="fade-left">
+                    <div
+                        className="testimonial"
+                        data-aos="flip-up"
+                        data-aos-delay="200"
+                    >
+                        <p>★★★★★</p>
+                        <blockquote>
+                            Modern equipment and excellent workout programs.
+                        </blockquote>
+                        <span>– Neha Shah</span>
+                    </div>
 
-                        <div className="fitness-banner" data-aos="zoom-in"
-                            data-aos-delay="100">
-                            <img src={m1} alt="Fitness Banner" />
-                        </div>
-
-                        <div className="members-image" data-aos="zoom-in"
-                            data-aos-delay="300">
-                            <img src={m2} alt="Happy Members" />
-                        </div>
-
+                    <div
+                        className="testimonial"
+                        data-aos="flip-up"
+                        data-aos-delay="300"
+                    >
+                        <p>★★★★★</p>
+                        <blockquote>
+                            Perfect place to stay motivated and fit.
+                        </blockquote>
+                        <span>– Amit Mehta</span>
                     </div>
 
                 </div>
-            </section>
+            </div>
+
+        </div>
+
+        {/* Right Side */}
+        <div className="images-section" data-aos="fade-left">
+
+            <div
+                className="fitness-banner"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+            >
+                <img src={m1} alt="Fitness Banner" />
+            </div>
+
+            <div
+                className="members-image"
+                data-aos="zoom-in"
+                data-aos-delay="300"
+            >
+                <img src={m2} alt="Happy Members" />
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
             {/* Trainer section */}
 

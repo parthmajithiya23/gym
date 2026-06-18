@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -27,17 +29,21 @@ function Navbar() {
         <li><Link className="link" to="/gallery">Gallery</Link></li>
         <li><Link className="link" to="/accessories">Accessories</Link></li>
         <li><Link className="link" to="/services">Services</Link></li>
+        <li><Link className="link" to="/plans">Plans</Link></li>
         <li><Link className="link" to="/contact">Contact</Link></li>
 
         {/* 🔥 MOBILE ONLY BUTTON (inside menu) */}
         <li className="mobile-join">
-          <button className="menu-join">JOIN NOW</button>
+          <button className="menu-join" onClick={() => navigate("/plans")}>JOIN NOW</button>
         </li>
 
       </ul>
 
       {/* 🔥 DESKTOP BUTTON ONLY */}
-      <button className="nav-btn">
+      <button
+        className="nav-btn"
+        onClick={() => navigate("/plans")}
+      >
         JOIN NOW
       </button>
 
