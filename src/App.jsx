@@ -15,7 +15,7 @@ import AOS from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Accessories from './accessories';
-import Services from "./Services";
+import Services from "./services";
 import Contact from "./contact";
 import Plans from "./plans";
 
