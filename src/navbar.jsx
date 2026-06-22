@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -24,13 +24,33 @@ function Navbar() {
       {/* MENU */}
       <ul className={menuOpen ? "links active" : "links"}>
 
-        <li><Link className="link" to="/">Home</Link></li>
-        <li><Link className="link" to="/about">About</Link></li>
-        <li><Link className="link" to="/gallery">Gallery</Link></li>
-        <li><Link className="link" to="/accessories">Accessories</Link></li>
-        <li><Link className="link" to="/services">Services</Link></li>
-        <li><Link className="link" to="/plans">Plans</Link></li>
-        <li><Link className="link" to="/contact">Contact</Link></li>
+        <li>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "link active" : "link"
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/about">
+            About
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/gallery">
+            Gallery
+          </NavLink>
+        </li>
+
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/accessories">Accessories</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/services">Services</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/plans">Plans</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/contact">Contact</NavLink></li>
 
         {/* 🔥 MOBILE ONLY BUTTON (inside menu) */}
         <li className="mobile-join">

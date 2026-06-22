@@ -3,8 +3,36 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 function Contact() {
+
+    // submit function
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                "service_5zk21p4",
+                "template_oct731h",
+                form.current,
+                "RU7LPSrU2kyqayieu"
+            )
+            .then(
+                () => {
+                    alert("Form Submitted Successfully!");
+                    form.current.reset();
+                },
+                (error) => {
+                    console.log(error);
+                    alert("Failed to submit form!");
+                }
+            );
+    };
+
+
     useEffect(() => {
         AOS.init({
             duration: 500,
@@ -29,48 +57,48 @@ function Contact() {
                     Join Sanatan Fitness and transform yourself.
                 </p>
 
-                <form>
+                <form ref={form} onSubmit={sendEmail}>
                     <div className="row">
                         <div className="input-box">
-                            <input type="text" required />
+                            <input type="text" name="firstName" required />
                             <label>First Name</label>
                         </div>
 
                         <div className="input-box">
-                            <input type="text" required />
+                            <input type="text" name="lastName" required />
                             <label>Last Name</label>
                         </div>
                     </div>
 
                     <div className="input-box">
-                        <input type="email" required />
+                        <input type="email" name="email" required />
                         <label>Email Address</label>
                     </div>
 
                     <div className="input-box">
-                        <input type="tel" required />
+                        <input type="tel" name="mobile" required />
                         <label>Mobile Number</label>
                     </div>
 
                     <div className="row">
                         <div className="input-box">
                             <span className="field-title">Date of Birth</span>
-                            <input type="date" required />
+                            <input type="date" name="dob" required />
                         </div>
 
                         <div className="input-box">
                             <span className="field-title">Joining Date</span>
-                            <input type="date" required />
+                            <input type="date" name="joiningDate" required />
                         </div>
                     </div>
 
                     <div className="input-box">
                         <span className="field-title">Preferred Workout Time</span>
-                        <input type="time" required />
+                        <input type="time" name="workoutTime" required />
                     </div>
-                    
+
                     <div className="row">
-                        <select defaultValue="">
+                        <select name="gender">
                             <option value="" disabled>
                                 Select Gender
                             </option>
@@ -79,7 +107,7 @@ function Contact() {
                             <option>Other</option>
                         </select>
 
-                        <select defaultValue="">
+                        <select name="goal">
                             <option value="" disabled>
                                 Fitness Goal
                             </option>
@@ -92,18 +120,18 @@ function Contact() {
 
                     <div className="row">
                         <div className="input-box">
-                            <input type="number" required />
+                            <input type="number" name="currentWeight" required />
                             <label>Current Weight (kg)</label>
                         </div>
 
                         <div className="input-box">
-                            <input type="number" required />
+                            <input type="number" name="targetWeight" required />
                             <label>Target Weight (kg)</label>
                         </div>
                     </div>
 
                     <div className="input-box">
-                        <textarea rows="5" required></textarea>
+                        <textarea name="message" rows="5" required></textarea>
                         <label>Tell us about your fitness goals...</label>
                     </div>
 

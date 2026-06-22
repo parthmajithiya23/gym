@@ -1,5 +1,7 @@
 import "./gallery.css";
 import { useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Gallery() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -88,7 +90,12 @@ function Gallery() {
 
             <div className="gallery-grid">
                 {images.map((img, index) => (
-                    <div className="gallery-card" key={index}>
+                    <div
+                        className="gallery-card"
+                        key={index}
+                        data-aos="zoom-in"
+                        data-aos-delay={index * 20}
+                    >
                         <img
                             src={img}
                             alt="Gym Gallery"

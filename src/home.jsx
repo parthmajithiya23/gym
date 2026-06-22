@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import './App.css';
 import gymlg from './assets/gymlg.png';
 import timage from './assets/timage.avif';
@@ -24,6 +25,24 @@ import GaugeComponent from "react-gauge-component";
 
 
 function Home() {
+
+    const navigate = useNavigate();
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === "Escape") {
+                setSelectedImage(null);
+            }
+        };
+
+        window.addEventListener("keydown", handleEsc);
+
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+        };
+    }, []);
+
 
     const [height, setHeight] = useState("");
     const [weight, setWeight] = useState("");
@@ -85,11 +104,12 @@ function Home() {
 
         const interval = setInterval(() => {
             setMembers((prev) => (prev < 500 ? prev + 5 : 500));
-            setTrainers((prev) => (prev < 3 ? prev + 1 : 3));
+            setTrainers((prev) => (prev < 3 ? prev + 3 : 3));
             setExperience((prev) => (prev < 5 ? prev + 1 : 5));
             setTransformations((prev) =>
-                prev < 1000 ? prev + 10 : 1000
+                prev < 250 ? prev + 3 : 250
             );
+
         }, 30);
 
         return () => clearInterval(interval);
@@ -129,14 +149,26 @@ function Home() {
                             TRANSFORM <span className="highlight-text"> YOUR LIFE💪</span>
                         </h1>
 
-                        <p>
-                            Welcome to Sanatan Gym — where strength, discipline, and fitness come together.
+                        <p className="welcome-title">
+                            Welcome to Sanatan Gym
+                        </p>
+
+                        <p className="welcome-desc">
+                            — where strength, discipline, and fitness come together.
                             Whether you're a beginner or a professional athlete, we help you achieve your fitness goals with expert trainers, modern equipment, and motivating workouts.
                         </p>
 
                         <div className="buttons">
-                            <button className="btn-primary">JOIN NOW</button>
-                            <button className="btn-outline">EXPLORE PROGRAMS</button>
+                            <button onClick={() => navigate("/plans")} className="btn-primary">JOIN NOW</button>
+                            <button
+                                className="btn-outline"
+                                onClick={() =>
+                                    document.querySelector(".program-section")
+                                        .scrollIntoView({ behavior: "smooth" })
+                                }
+                            >
+                                EXPLORE PROGRAMS
+                            </button>
                         </div>
                     </div>
                     {/* Right side */}
@@ -241,7 +273,7 @@ function Home() {
                                 data-aos-delay="500"
                             >
                                 <h3>Your BMI: {bmi}</h3>
-                               <p className={status.toLowerCase()}>{status}</p>
+                                <p className={status.toLowerCase()}>{status}</p>
                             </div>
                         </>
                     )}
@@ -457,153 +489,159 @@ function Home() {
 
             {/* flexible membership plans */}
 
-          <section className="membership-plans-section" data-aos="fade-up">
-    <h2 className="section-title" data-aos="fade-down">
-        FLEXIBLE <span>MEMBERSHIP PLANS</span>
-    </h2>
-
-    <div className="membership-container">
-
-        {/* Left Side */}
-        <div className="membership-left" data-aos="fade-right">
-
-            <div className="membership-plans">
-
-                <div
-                    className="membership-plan-card"
-                    data-aos="zoom-in"
-                    data-aos-delay="100"
-                >
-                    <h3>MONTHLY PLAN</h3>
-                    <h2>₹999 <span>/month</span></h2>
-
-                    <ul>
-                        <li>Full Gym Access</li>
-                        <li>Basic Trainer Support</li>
-                        <li>Diet Guidance</li>
-                        <li>Locker Facility</li>
-                    </ul>
-
-                    <button>CHOOSE PLAN</button>
-                </div>
-
-                <div
-                    className="membership-plan-card featured"
-                    data-aos="zoom-in"
-                    data-aos-delay="200"
-                >
-                    <div className="badge">BEST VALUE</div>
-
-                    <h3>QUARTERLY PLAN</h3>
-                    <h2>₹2499 <span>/3 months</span></h2>
-
-                    <ul>
-                        <li>Full Gym Access</li>
-                        <li>Personal Trainer (2 Sessions)</li>
-                        <li>Diet Guidance</li>
-                        <li>Locker Facility</li>
-                    </ul>
-
-                    <button>CHOOSE PLAN</button>
-                </div>
-
-                <div
-                    className="membership-plan-card"
-                    data-aos="zoom-in"
-                    data-aos-delay="300"
-                >
-                    <h3>ANNUAL PLAN</h3>
-                    <h2>₹8999 <span>/year</span></h2>
-
-                    <ul>
-                        <li>Full Gym Access</li>
-                        <li>Personal Trainer (8 Sessions)</li>
-                        <li>Diet Guidance</li>
-                        <li>Locker Facility</li>
-                        <li>Free Body Assessment</li>
-                    </ul>
-
-                    <button>CHOOSE PLAN</button>
-                </div>
-
-            </div>
-
-            {/* Testimonials */}
-            <div
-                className="testimonials"
-                data-aos="fade-up"
-                data-aos-delay="400"
-            >
-                <h2>
-                    WHAT OUR <span>MEMBERS SAY</span>
+            <section className="membership-plans-section" data-aos="fade-up">
+                <h2 className="section-title" data-aos="fade-down">
+                    FLEXIBLE <span>MEMBERSHIP PLANS</span>
                 </h2>
 
-                <div className="testimonial-cards">
+                <div className="membership-container">
 
-                    <div
-                        className="testimonial"
-                        data-aos="flip-up"
-                        data-aos-delay="100"
-                    >
-                        <p>★★★★★</p>
-                        <blockquote>
-                            Best gym environment and supportive trainers!
-                        </blockquote>
-                        <span>– Raj Patel</span>
+                    {/* Left Side */}
+                    <div className="membership-left" data-aos="fade-right">
+
+                        <div className="membership-plans">
+
+                            <div
+                                className="membership-plan-card"
+                                data-aos="zoom-in"
+                                data-aos-delay="100"
+                            >
+                                <h3>MONTHLY PLAN</h3>
+                                <h2>₹999 <span>/month</span></h2>
+
+                                <ul>
+                                    <li>Full Gym Access</li>
+                                    <li>Basic Trainer Support</li>
+                                    <li>Diet Guidance</li>
+                                    <li>Locker Facility</li>
+                                </ul>
+
+                                <button onClick={() => navigate("/plans")}>
+                                    CHOOSE PLAN
+                                </button>
+                            </div>
+
+                            <div
+                                className="membership-plan-card featured"
+                                data-aos="zoom-in"
+                                data-aos-delay="200"
+                            >
+                                <div className="badge">BEST VALUE</div>
+
+                                <h3>QUARTERLY PLAN</h3>
+                                <h2>₹2499 <span>/3 months</span></h2>
+
+                                <ul>
+                                    <li>Full Gym Access</li>
+                                    <li>Personal Trainer (2 Sessions)</li>
+                                    <li>Diet Guidance</li>
+                                    <li>Locker Facility</li>
+                                </ul>
+
+                                <button onClick={() => navigate("/plans")}>
+                                    CHOOSE PLAN
+                                </button>
+                            </div>
+
+                            <div
+                                className="membership-plan-card"
+                                data-aos="zoom-in"
+                                data-aos-delay="300"
+                            >
+                                <h3>ANNUAL PLAN</h3>
+                                <h2>₹8999 <span>/year</span></h2>
+
+                                <ul>
+                                    <li>Full Gym Access</li>
+                                    <li>Personal Trainer (8 Sessions)</li>
+                                    <li>Diet Guidance</li>
+                                    <li>Locker Facility</li>
+                                    <li>Free Body Assessment</li>
+                                </ul>
+
+                                <button onClick={() => navigate("/plans")}>
+                                    CHOOSE PLAN
+                                </button>
+                            </div>
+
+                        </div>
+
+                        {/* Testimonials */}
+                        <div
+                            className="testimonials"
+                            data-aos="fade-up"
+                            data-aos-delay="400"
+                        >
+                            <h2>
+                                WHAT OUR <span>MEMBERS SAY</span>
+                            </h2>
+
+                            <div className="testimonial-cards">
+
+                                <div
+                                    className="testimonial"
+                                    data-aos="flip-up"
+                                    data-aos-delay="100"
+                                >
+                                    <p>★★★★★</p>
+                                    <blockquote>
+                                        Best gym environment and supportive trainers!
+                                    </blockquote>
+                                    <span>– Raj Patel</span>
+                                </div>
+
+                                <div
+                                    className="testimonial"
+                                    data-aos="flip-up"
+                                    data-aos-delay="200"
+                                >
+                                    <p>★★★★★</p>
+                                    <blockquote>
+                                        Modern equipment and excellent workout programs.
+                                    </blockquote>
+                                    <span>– Neha Shah</span>
+                                </div>
+
+                                <div
+                                    className="testimonial"
+                                    data-aos="flip-up"
+                                    data-aos-delay="300"
+                                >
+                                    <p>★★★★★</p>
+                                    <blockquote>
+                                        Perfect place to stay motivated and fit.
+                                    </blockquote>
+                                    <span>– Amit Mehta</span>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div
-                        className="testimonial"
-                        data-aos="flip-up"
-                        data-aos-delay="200"
-                    >
-                        <p>★★★★★</p>
-                        <blockquote>
-                            Modern equipment and excellent workout programs.
-                        </blockquote>
-                        <span>– Neha Shah</span>
-                    </div>
+                    {/* Right Side */}
+                    <div className="images-section" data-aos="fade-left">
 
-                    <div
-                        className="testimonial"
-                        data-aos="flip-up"
-                        data-aos-delay="300"
-                    >
-                        <p>★★★★★</p>
-                        <blockquote>
-                            Perfect place to stay motivated and fit.
-                        </blockquote>
-                        <span>– Amit Mehta</span>
+                        <div
+                            className="fitness-banner"
+                            data-aos="zoom-in"
+                            data-aos-delay="100"
+                        >
+                            <img src={m1} alt="Fitness Banner" />
+                        </div>
+
+                        <div
+                            className="members-image"
+                            data-aos="zoom-in"
+                            data-aos-delay="300"
+                        >
+                            <img src={m2} alt="Happy Members" />
+                        </div>
+
                     </div>
 
                 </div>
-            </div>
-
-        </div>
-
-        {/* Right Side */}
-        <div className="images-section" data-aos="fade-left">
-
-            <div
-                className="fitness-banner"
-                data-aos="zoom-in"
-                data-aos-delay="100"
-            >
-                <img src={m1} alt="Fitness Banner" />
-            </div>
-
-            <div
-                className="members-image"
-                data-aos="zoom-in"
-                data-aos-delay="300"
-            >
-                <img src={m2} alt="Happy Members" />
-            </div>
-
-        </div>
-
-    </div>
-</section>
+            </section>
 
             {/* Trainer section */}
 
@@ -665,10 +703,30 @@ function Home() {
                 >
                     SUCCESS STORIES
                 </h2>
+                {selectedImage && (
+                    <div
+                        className="image-modal"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button
+                            className="close-btn"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            ✕
+                        </button>
+
+                        <img
+                            src={selectedImage}
+                            alt="Preview"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </div>
+                )}
 
                 <div className="gallery">
 
                     <img
+                        onClick={() => setSelectedImage(beforeAfter1)}
                         src={beforeAfter1}
                         alt="Client Transformation 1"
                         data-aos="zoom-in"
@@ -676,6 +734,7 @@ function Home() {
                     />
 
                     <img
+                        onClick={() => setSelectedImage(beforeAfter2)}
                         src={beforeAfter2}
                         alt="Client Transformation 2"
                         data-aos="zoom-in"
@@ -683,6 +742,7 @@ function Home() {
                     />
 
                     <img
+                        onClick={() => setSelectedImage(beforeAfter3)}
                         src={beforeAfter3}
                         alt="Client Transformation 3"
                         data-aos="zoom-in"
@@ -690,6 +750,7 @@ function Home() {
                     />
 
                     <img
+                        onClick={() => setSelectedImage(beforeAfter4)}
                         src={beforeAfter4}
                         alt="Client Transformation 4"
                         data-aos="zoom-in"

@@ -30,7 +30,7 @@ function Footer() {
                     <div className="footer-col">
                         <h3>QUICK LINKS</h3>
                         <ul>
-                            <li><Link  to="/">Home</Link></li>
+                            <li><Link to="/">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/gallery">Gallery</Link></li>
                             <li><Link to="/accessories">Accessories</Link></li>
@@ -44,11 +44,11 @@ function Footer() {
                     <div className="footer-col">
                         <h3>PROGRAMS</h3>
                         <ul>
-                            <li>Strength Training</li>
-                            <li>Cardio Training</li>
-                            <li>Functional Fitness</li>
-                            <li>Yoga & Meditation</li>
-                            <li>Diet Consultation</li>
+                            <li><Link to="/strength-training">Strength Training</Link></li>
+                            <li><Link to="/cardio-training">Cardio Training</Link></li>
+                            <li><Link to="/functional-fitness">Functional Fitness</Link></li>
+                            <li><Link to="/yoga-meditation">Yoga & Meditation</Link></li>
+                            <li><Link to="/diet-plan">Diet Consultation</Link></li>
                         </ul>
                     </div>
 
@@ -72,10 +72,10 @@ function Footer() {
                         <h3>FOLLOW US</h3>
 
                         <div className="social-icons">
-                            <a href="#"><FaFacebookF /></a>
-                            <a href="#"><FaInstagram /></a>
-                            <a href="#"><FaYoutube /></a>
-                            <a href="#"><FaWhatsapp /></a>
+                            <a href="https://www.facebook.com/"><FaFacebookF /></a>
+                            <a href="https://www.instagram.com/"><FaInstagram /></a>
+                            <a href="https://www.youtube.com/"><FaYoutube /></a>
+                            <a href="https://web.whatsapp.com/"><FaWhatsapp /></a>
                         </div>
 
                         <img

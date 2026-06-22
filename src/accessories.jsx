@@ -6,7 +6,7 @@ import band from "./assets/band.jpeg";
 import belt from "./assets/belt.jpeg";
 import mat from "./assets/mat.jpg";
 import roller from "./assets/rollar.jpeg";
-import rope from './assets/rope.jpeg';
+import rope from './assets/jump.jpeg';
 import bag from './assets/bag.jpeg';
 import bottle from "./assets/bottle.jpeg";
 import wraps from "./assets/wraps.jpeg";

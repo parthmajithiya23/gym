@@ -21,7 +21,7 @@ function DietPlan() {
 
             <div className="bnf">
                 <div className="bnf normal">
-                    <img src={ntr} alt="" className="bnf-image"/>
+                    <img src={ntr} alt="" className="bnf-image" />
                     <div className="bnf-text">
                         <h2>Benefits</h2>
                         <ul>
@@ -36,14 +36,21 @@ function DietPlan() {
 
             </div>
 
-            <h2>Nutrition Guidelines</h2>
-            <ul>
-                <li>Eat protein-rich foods regularly</li>
-                <li>Include fresh fruits and vegetables</li>
-                <li>Stay hydrated throughout the day</li>
-                <li>Choose whole grains over processed foods</li>
-                <li>Avoid excessive sugar and junk food</li>
-            </ul>
+            <div className="bnf">
+                <div className="bnf reverse">
+                      <img src={ntr} alt="" className="bnf-image" />
+                    <div className="bnf-text">
+                        <h2>Nutrition Guidelines</h2>
+                        <ul>
+                            <li>Eat protein-rich foods regularly</li>
+                            <li>Include fresh fruits and vegetables</li>
+                            <li>Stay hydrated throughout the day</li>
+                            <li>Choose whole grains over processed foods</li>
+                            <li>Avoid excessive sugar and junk food</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </div>
     );

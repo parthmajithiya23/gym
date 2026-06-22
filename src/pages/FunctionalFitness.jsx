@@ -1,4 +1,4 @@
-// import video from '../assets/functional.mp4';
+import video from '../assets/functional.mp4';
 import fnc from '../assets/functional.jpg'
 
 function FunctionalFitness() {
@@ -41,9 +41,9 @@ function FunctionalFitness() {
                     <div className="box video-box">
                         <h3>Watch Video</h3>
 
-                        {/* <video className="fitness-video" controls autoPlay playsInline muted loop>
+                        <video className="fitness-video" controls autoPlay playsInline muted loop>
                             <source src={video} type="video/mp4" />
-                        </video> */}
+                        </video>
                     </div>
 
                 </div>
