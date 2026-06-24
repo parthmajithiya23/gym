@@ -1,5 +1,5 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, } from "react-icons/fa";
-import logo2 from './assets/logo2.png';
+import logo from "./assets/logo.png";
 import footerMan from "./assets/footerman.png";
 import './App.css';
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ function Footer() {
 
                     {/* Logo & About */}
                     <div className="footer-col">
-                        <img src={logo2} alt="Sanatan Gym" className="footer-logo" />
+                        <img src={logo} alt="Sanatan Gym" className="footer-logo" />
 
                         <p>
                             Strength, discipline and fitness come together at
@@ -33,7 +33,7 @@ function Footer() {
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/gallery">Gallery</Link></li>
-                            <li><Link to="/accessories">Accessories</Link></li>
+                            <li><Link to="/products">Products</Link></li>
                             <li><Link to="/services">Services</Link></li>
                             <li><Link to="/plans">Plans</Link></li>
                             <li><Link to="/contact">Contact</Link></li>

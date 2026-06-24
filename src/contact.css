@@ -280,3 +280,7 @@ select option {
     grid-template-columns: 1fr;
   }
 }
+
+.input-box label {
+    pointer-events: none; 
+}

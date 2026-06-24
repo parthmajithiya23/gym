@@ -1431,8 +1431,9 @@ body {
 
 /* Logo */
 .footer-logo {
-  width: 350px;
-  margin-bottom: 15px;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 /* Headings */

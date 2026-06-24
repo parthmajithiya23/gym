@@ -3,35 +3,49 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 
 function Contact() {
-
-    // submit function
     const form = useRef();
-    const sendEmail = (e) => {
+
+    // હવે આ ફંક્શન માત્ર ડેટાને એડમિન પેજ માટે સેવ કરશે
+    const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        emailjs
-            .sendForm(
-                "service_5zk21p4",
-                "template_oct731h",
-                form.current,
-                "RU7LPSrU2kyqayieu"
-            )
-            .then(
-                () => {
-                    alert("Form Submitted Successfully!");
-                    form.current.reset();
-                },
-                (error) => {
-                    console.log(error);
-                    alert("Failed to submit form!");
-                }
-            );
-    };
+        const formData = new FormData(form.current);
 
+        // ==========================================
+        // 1. એડમિન પેજ માટે LocalStorage માં ડેટા સેવ કરો
+        // ==========================================
+        const newInquiry = {
+            id: Date.now(),
+
+            name: `${formData.get("firstName")} ${formData.get("lastName")}`,
+            email: formData.get("email"),
+            phone: formData.get("mobile"),
+
+            dob: formData.get("dob"),
+            gender: formData.get("gender"),
+            joiningDate: formData.get("joiningDate"),
+            workoutTime: formData.get("workoutTime"),
+
+            goal: formData.get("goal"),
+
+            currentWeight: formData.get("currentWeight"),
+            targetWeight: formData.get("targetWeight"),
+
+            message: formData.get("message"),
+
+            date: new Date().toLocaleDateString()
+        };
+
+        const existingInquiries = JSON.parse(localStorage.getItem("gym_inquiries")) || [];
+        localStorage.setItem("gym_inquiries", JSON.stringify([newInquiry, ...existingInquiries]));
+
+        // ફોર્મ રિસેટ કરો અને યુઝરને મેસેજ બતાવો
+        form.current.reset();
+        alert("તમારો મેસેજ સફળતાપૂર્વક મોકલાઈ ગયો છે! અમે ટૂંક સમયમાં તમારો સંપર્ક કરીશું.");
+    };
 
     useEffect(() => {
         AOS.init({
@@ -57,7 +71,7 @@ function Contact() {
                     Join Sanatan Fitness and transform yourself.
                 </p>
 
-                <form ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={handleFormSubmit}>
                     <div className="row">
                         <div className="input-box">
                             <input type="text" name="firstName" required />
@@ -98,23 +112,23 @@ function Contact() {
                     </div>
 
                     <div className="row">
-                        <select name="gender">
+                        <select name="gender" required defaultValue="">
                             <option value="" disabled>
                                 Select Gender
                             </option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
 
-                        <select name="goal">
+                        <select name="goal" required defaultValue="">
                             <option value="" disabled>
                                 Fitness Goal
                             </option>
-                            <option>Weight Loss</option>
-                            <option>Muscle Gain</option>
-                            <option>Strength Training</option>
-                            <option>General Fitness</option>
+                            <option value="Weight Loss">Weight Loss</option>
+                            <option value="Muscle Gain">Muscle Gain</option>
+                            <option value="Strength Training">Strength Training</option>
+                            <option value="General Fitness">General Fitness</option>
                         </select>
                     </div>
 
