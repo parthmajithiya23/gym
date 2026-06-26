@@ -1,48 +1,44 @@
 import "./contact.css";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useRef } from "react";
+// 1. અહીં useLocation ઇમ્પોર્ટ કરો
+import { useLocation } from "react-router-dom";
 
 function Contact() {
     const form = useRef();
 
-    // હવે આ ફંક્શન માત્ર ડેટાને એડમિન પેજ માટે સેવ કરશે
+    // 2. location માંથી state મેળવો
+    const location = useLocation();
+    const defaultPlan = location.state?.selectedPlan || "";
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
         const formData = new FormData(form.current);
 
-        // ==========================================
-        // 1. એડમિન પેજ માટે LocalStorage માં ડેટા સેવ કરો
-        // ==========================================
         const newInquiry = {
             id: Date.now(),
-
             name: `${formData.get("firstName")} ${formData.get("lastName")}`,
             email: formData.get("email"),
             phone: formData.get("mobile"),
-
             dob: formData.get("dob"),
             gender: formData.get("gender"),
             joiningDate: formData.get("joiningDate"),
             workoutTime: formData.get("workoutTime"),
-
             goal: formData.get("goal"),
-
+            // 3. પ્લાનનો ડેટા પણ સેવ કરો
+            plan: formData.get("plan"),
             currentWeight: formData.get("currentWeight"),
             targetWeight: formData.get("targetWeight"),
-
             message: formData.get("message"),
-
             date: new Date().toLocaleDateString()
         };
 
         const existingInquiries = JSON.parse(localStorage.getItem("gym_inquiries")) || [];
         localStorage.setItem("gym_inquiries", JSON.stringify([newInquiry, ...existingInquiries]));
 
-        // ફોર્મ રિસેટ કરો અને યુઝરને મેસેજ બતાવો
         form.current.reset();
         alert("તમારો મેસેજ સફળતાપૂર્વક મોકલાઈ ગયો છે! અમે ટૂંક સમયમાં તમારો સંપર્ક કરીશું.");
     };
@@ -66,7 +62,6 @@ function Contact() {
                 }}
             >
                 <h2 data-aos="fade-down">START YOUR FITNESS JOURNEY</h2>
-
                 <p className="contact-subtitle">
                     Join Sanatan Fitness and transform yourself.
                 </p>
@@ -111,20 +106,27 @@ function Contact() {
                         <input type="time" name="workoutTime" required />
                     </div>
 
+                    {/* 4. અહીં નવું Plan Selection Dropdown ઉમેરેલ છે */}
                     <div className="row">
+                        <select name="plan" required defaultValue={defaultPlan}>
+                            <option value="" disabled>Select Membership Plan</option>
+                            <option value="Monthly Plan">Monthly Plan</option>
+                            <option value="Standard Plan">Standard Plan</option>
+                            <option value="Premium Plan">Premium Plan</option>
+                            <option value="Annual Plan">Annual Plan</option>
+                        </select>
+
                         <select name="gender" required defaultValue="">
-                            <option value="" disabled>
-                                Select Gender
-                            </option>
+                            <option value="" disabled>Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
                         </select>
+                    </div>
 
+                    <div className="row">
                         <select name="goal" required defaultValue="">
-                            <option value="" disabled>
-                                Fitness Goal
-                            </option>
+                            <option value="" disabled>Fitness Goal</option>
                             <option value="Weight Loss">Weight Loss</option>
                             <option value="Muscle Gain">Muscle Gain</option>
                             <option value="Strength Training">Strength Training</option>
@@ -181,3 +183,4 @@ function Contact() {
 }
 
 export default Contact;
+

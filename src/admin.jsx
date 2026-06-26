@@ -18,6 +18,7 @@ function Admin() {
         name: "",
         price: "",
         stock: "",
+        discount: "", // DISCOUNT FIELD ADD KARYU
         image: "",
         description: "",
     });
@@ -57,7 +58,8 @@ function Admin() {
         }
 
         setShowForm(false);
-        setNewProduct({ name: "", price: "", stock: "", image: "", description: "" });
+        // FORM RESET VAKHTE DISCOUNT PAN RESET THASE
+        setNewProduct({ name: "", price: "", stock: "", discount: "", image: "", description: "" });
         setEditId(null);
         alert(editId ? "✅ Product Updated Successfully!" : "✅ Product Added Successfully!");
     };
@@ -100,19 +102,18 @@ function Admin() {
     };
 
     const handleViewInquiry = (inquiry) => {
-        setSelectedInquiry(inquiry); // મોડલ ખોલવા માટે
+        setSelectedInquiry(inquiry);
 
-        // જો ઇન્ક્વાયરી પહેલેથી "Read" ન હોય, તો તેને "Read" કરો
         if (!inquiry.isRead) {
             const updatedInquiries = inquiries.map((inq) =>
                 inq.id === inquiry.id ? { ...inq, isRead: true } : inq
             );
-            setInquiries(updatedInquiries); // State અપડેટ કરો
-            localStorage.setItem("gym_inquiries", JSON.stringify(updatedInquiries)); // લોકલ સ્ટોરેજ અપડેટ કરો
+            setInquiries(updatedInquiries);
+            localStorage.setItem("gym_inquiries", JSON.stringify(updatedInquiries));
         }
     };
-   
-   const pendingOrdersCount = orders.filter(order => order.status === "Pending").length;
+
+    const pendingOrdersCount = orders.filter(order => order.status === "Pending").length;
     const newInquiriesCount = inquiries.filter(inq => !inq.isRead).length;
 
     // ---------------- RENDER ----------------
@@ -166,7 +167,7 @@ function Admin() {
                                 onClick={() => {
                                     setShowForm(true);
                                     setEditId(null);
-                                    setNewProduct({ name: "", price: "", stock: "", image: "", description: "" });
+                                    setNewProduct({ name: "", price: "", stock: "", discount: "", image: "", description: "" });
                                 }}
                             >
                                 + Add Product
@@ -188,6 +189,13 @@ function Admin() {
                                         placeholder="Price (₹) *"
                                         value={newProduct.price}
                                         onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+                                    />
+                                    {/* DISCOUNT INPUT FIELD */}
+                                    <input
+                                        type="number"
+                                        placeholder="Discount (%)"
+                                        value={newProduct.discount}
+                                        onChange={(e) => setNewProduct({ ...newProduct, discount: e.target.value })}
                                     />
                                     <input
                                         type="number"
@@ -257,6 +265,7 @@ function Admin() {
                                         <th>Product</th>
                                         <th>Description</th>
                                         <th>Price</th>
+                                        <th>Discount</th> {/* DISCOUNT HEADER KARYU */}
                                         <th>Stock</th>
                                         <th className="action-col">Edit</th>
                                         <th className="action-col">Delete</th>
@@ -265,7 +274,7 @@ function Admin() {
                                 <tbody>
                                     {products.length === 0 ? (
                                         <tr>
-                                            <td colSpan="7" className="empty-msg">No products found. Add some! 📦</td>
+                                            <td colSpan="8" className="empty-msg">No products found. Add some! 📦</td>
                                         </tr>
                                     ) : (
                                         products.map((product) => (
@@ -288,6 +297,12 @@ function Admin() {
                                                     </div>
                                                 </td>
                                                 <td className="text-success fw-bold">₹{product.price}</td>
+
+                                                {/* DISCOUNT NI VALUE BATAVVA MATE */}
+                                                <td className="text-danger fw-bold">
+                                                    {product.discount ? `${product.discount}% OFF` : "-"}
+                                                </td>
+
                                                 <td>
                                                     <span className={`stock-badge ${product.stock < 5 ? "low-stock" : ""}`}>
                                                         {product.stock} units
@@ -303,6 +318,7 @@ function Admin() {
                                                                 name: product.name,
                                                                 price: product.price,
                                                                 stock: product.stock,
+                                                                discount: product.discount || "", // EDIT MA DISCOUNT ADD THAY E MATE
                                                                 image: product.image || "",
                                                                 description: product.description || "",
                                                             });
@@ -326,6 +342,7 @@ function Admin() {
                 )}
 
                 {/* ======================= ORDERS TAB ======================= */}
+                {/* Omitted for brevity: (Your orders tab code remains unchanged) */}
                 {activeTab === "orders" && (
                     <div className="fade-in">
                         <div className="header">
@@ -397,6 +414,7 @@ function Admin() {
                 )}
 
                 {/* ======================= INQUIRIES TAB ======================= */}
+                {/* Omitted for brevity: (Your inquiries tab code remains unchanged) */}
                 {activeTab === "inquiries" && (
                     <div className="fade-in">
                         <div className="header">
@@ -464,19 +482,59 @@ function Admin() {
                                             ❌
                                         </button>
                                         <h2>Customer Full Details</h2>
-                                        <p><b>Name:</b> {selectedInquiry.name}</p>
-                                        <p><b>Phone:</b> {selectedInquiry.phone}</p>
-                                        <p><b>Email:</b> {selectedInquiry.email}</p>
-                                        <p><b>DOB:</b> {selectedInquiry.dob}</p>
-                                        <p><b>Gender:</b> {selectedInquiry.gender}</p>
-                                        <p><b>Joining Date:</b> {selectedInquiry.joiningDate}</p>
-                                        <p><b>Workout Time:</b> {selectedInquiry.workoutTime}</p>
-                                        <p><b>Goal:</b> {selectedInquiry.goal}</p>
-                                        <p><b>Current Weight:</b> {selectedInquiry.currentWeight} kg</p>
-                                        <p><b>Target Weight:</b> {selectedInquiry.targetWeight} kg</p>
-                                        <p><b>Message:</b></p>
-                                        <div className="message-box">
-                                            {selectedInquiry.message}
+
+                                        {/* નવું વ્યવસ્થિત ટેબલ */}
+                                        <table className="inquiry-details-table">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <td>{selectedInquiry.name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Phone</th>
+                                                    <td>{selectedInquiry.phone}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <td>{selectedInquiry.email}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>DOB</th>
+                                                    <td>{selectedInquiry.dob}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender</th>
+                                                    <td>{selectedInquiry.gender}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Joining Date</th>
+                                                    <td>{selectedInquiry.joiningDate}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Workout Time</th>
+                                                    <td>{selectedInquiry.workoutTime}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Selected Plan</th>
+                                                    {/* Plan ને હાઇલાઇટ કરવા બેજ ઉમેર્યો છે */}
+                                                    <td><span className="plan-badge">{selectedInquiry.plan || "Not Selected"}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Goal</th>
+                                                    <td>{selectedInquiry.goal}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Weight</th>
+                                                    <td>{selectedInquiry.currentWeight} kg (Current) ➡️ {selectedInquiry.targetWeight} kg (Target)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <div className="message-section">
+                                            <strong>Message:</strong>
+                                            <div className="message-box">
+                                                {selectedInquiry.message || "No message provided."}
+                                            </div>
                                         </div>
 
                                     </div>

@@ -76,7 +76,7 @@ function Plans() {
                             ))}
                         </ul>
 
-                        <button onClick={() => navigate("/contact")}>
+                        <button onClick={() => navigate("/contact", { state: { selectedPlan: plan.name } })}>
                             Join Now
                         </button>
 

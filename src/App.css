@@ -1431,9 +1431,11 @@ body {
 
 /* Logo */
 .footer-logo {
-    width: 70px;
+    width: 95%;
     height: 70px;
     object-fit: contain;
+    margin-bottom: 30px;
+  
 }
 
 /* Headings */
@@ -1571,17 +1573,29 @@ body {
 }
 
 /* Mobile */
+/* Mobile */
 @media (max-width: 768px) {
   .footer-container {
-    grid-template-columns: 1fr;
+    /* 2 કોલમ બનાવશે */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     text-align: center;
   }
 
+  /* 1લો (Logo), 4થો (Contact) અને 5મો (Social) ભાગ આખી જગ્યા લેશે */
+  .footer-col:nth-child(1),
+  .footer-col:nth-child(4),
+  .footer-col:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  /* Quick Links અને Programs ના હેડિંગ નીચેની લાઈન સેન્ટરમાં રાખવા */
   .footer-col h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
 
+  /* ફોટો પહેલાની જેમ જ રાખવા */
   .footer-man {
     width: 180px;
     margin: 20px auto 0;

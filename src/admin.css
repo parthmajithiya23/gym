@@ -10,6 +10,7 @@
 
 body {
     background-color: #f4f7f6;
+    overflow: hidden; 
 }
 
 /* =========================================
@@ -17,14 +18,16 @@ body {
 ========================================= */
 .admin-container {
     display: flex;
-    min-height: 100vh;
+    height: 100vh; 
+    width: 100vw;
     background-color: #f4f7f6;
 }
 
 .content {
     flex: 1;
+    height: 100vh;
     padding: 40px;
-    overflow-y: auto;
+    overflow-y: auto; 
 }
 
 .header {
@@ -44,6 +47,8 @@ body {
 ========================================= */
 .sidebar {
     width: 260px;
+    height: 100vh; 
+    flex-shrink: 0; 
     background: #1e1e2f;
     color: white;
     padding: 30px 20px;
@@ -397,6 +402,63 @@ tbody tr:hover {
     margin-top: 10px;
     white-space: pre-wrap;
 }
+/* =========================================
+   10. Inquiry Modal Table Styles (NEW)
+========================================= */
+.inquiry-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.inquiry-details-table th,
+.inquiry-details-table td {
+    padding: 12px 15px;
+    border: 1px solid #eaeaea;
+    text-align: left;
+    font-size: 14px;
+}
+
+.inquiry-details-table th {
+    background-color: #f4f7f6;
+    width: 35%;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.inquiry-details-table td {
+    color: #555;
+    background-color: #fff;
+}
+
+.inquiry-details-table tr:hover td {
+    background-color: #fbfbfc;
+}
+
+.plan-badge {
+    background: #111;
+    color: #ffcc00;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.message-section {
+    margin-top: 15px;
+}
+
+.message-section strong {
+    font-size: 16px;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 8px;
+}
 
 /* =========================================
    8. Animations
@@ -433,12 +495,13 @@ tbody tr:hover {
 
 /* MOBILE (768px) */
 @media (max-width: 768px) {
-    .admin-container { flex-direction: column; }
-    .sidebar { width: 100%; padding: 20px; }
-    .sidebar h2 { margin-bottom: 20px; }
-    .nav-buttons { flex-direction: row; overflow-x: auto; gap: 10px; }
-    .sidebar button { min-width: 140px; text-align: center; }
-    .content { padding: 20px; }
+    body { overflow: auto; }
+   .admin-container { flex-direction: column; height: auto; }
+   .sidebar { width: 100%; height: auto; padding: 20px; }
+   .sidebar h2 { margin-bottom: 20px; }
+   .nav-buttons { flex-direction: row; overflow-x: auto; gap: 10px; }
+   .sidebar button { min-width: 140px; text-align: center; }
+    .content { padding: 20px; height: auto; overflow-y: visible; }
     .header { flex-direction: column; gap: 15px; align-items: flex-start; }
     .header h1 { font-size: 22px; }
     .add-btn { width: 100%; }

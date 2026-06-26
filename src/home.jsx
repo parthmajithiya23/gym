@@ -402,8 +402,8 @@ function Home() {
                             vitality, and getting into remarkable physical shape is an additional
                             benefit.
                             <span className="highlight">
-                                {" "}Book a free consultation
-                            </span>{" "}
+                                Book a free consultation
+                            </span>
                             to discover how our top-rated personal trainers can help you achieve
                             your fitness goals.
                         </p>

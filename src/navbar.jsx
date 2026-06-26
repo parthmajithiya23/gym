@@ -8,6 +8,9 @@ function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Menu bandh karva mate ek simple function
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="nav">
 
@@ -30,31 +33,40 @@ function Navbar() {
               isActive ? "link active" : "link"
             }
             to="/"
+            onClick={closeMenu} /* 🔥 Ahia add karyu */
           >
             Home
           </NavLink>
         </li>
 
         <li>
-          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/about">
+          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/about" onClick={closeMenu}>
             About
           </NavLink>
         </li>
 
         <li>
-          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/gallery">
+          <NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/gallery" onClick={closeMenu}>
             Gallery
           </NavLink>
         </li>
 
-        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/products">Products</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/services">Services</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/plans">Plans</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/contact">Contact</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/products" onClick={closeMenu}>Products</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/services" onClick={closeMenu}>Services</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/plans" onClick={closeMenu}>Plans</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "link active" : "link"} to="/contact" onClick={closeMenu}>Contact</NavLink></li>
 
         {/* 🔥 MOBILE ONLY BUTTON (inside menu) */}
         <li className="mobile-join">
-          <button className="menu-join" onClick={() => navigate("/plans")}>JOIN NOW</button>
+          <button 
+            className="menu-join" 
+            onClick={() => { 
+              navigate("/plans"); 
+              closeMenu(); /* 🔥 Redirect thaya pachi menu close thashe */
+            }}
+          >
+            JOIN NOW
+          </button>
         </li>
 
       </ul>
