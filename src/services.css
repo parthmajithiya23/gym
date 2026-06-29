@@ -64,10 +64,16 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .main-sections {
+    /* Navbar height pramane aa space aapeli che jethi content hide na thay */
+    padding-top: 80px; 
+  }
+
   .section {
     flex-direction: column !important;
     text-align: center;
-    padding: 60px 20px;
+    /* Upar thi thodi jagya adjust kari */
+    padding: 40px 20px 60px 20px; 
   }
 
   .text h2 {

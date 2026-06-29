@@ -1,9 +1,10 @@
 import React from "react";
 import "./services.css";
+
 import gymImage from "./assets/gym.jpg";
 import trainer3 from "./assets/trainer3.webp";
 import fatloss from "./assets/fatloss.jpeg";
-import kasar from "./assets/kasar.jpg"
+import kasar from "./assets/kasar.jpg";
 
 function Sections() {
   const data = [
@@ -42,25 +43,33 @@ function Sections() {
   ];
 
   return (
-    <div className="main-sections">
-
+    <div className="main-sections" style={{ overflowX: "hidden" }}>
+    
+      
       {data.map((item, index) => (
         <section
           key={index}
           className={`section ${index % 2 === 0 ? "" : "reverse"}`}
         >
-          <div className="text">
+          {/* Text animates from the left on even rows, right on odd rows */}
+          <div 
+            className="text" 
+            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+          >
             <h2>{item.title}</h2>
             <p>{item.desc1}</p>
             <p>{item.desc2}</p>
           </div>
 
-          <div className="image">
+          {/* Image animates from the right on even rows, left on odd rows */}
+          <div 
+            className="image" 
+            data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
+          >
             <img src={item.img} alt={item.title} />
           </div>
         </section>
       ))}
-
     </div>
   );
 }

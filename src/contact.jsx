@@ -1,15 +1,11 @@
 import "./contact.css";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-// 1. અહીં useLocation ઇમ્પોર્ટ કરો
+import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 function Contact() {
     const form = useRef();
 
-    // 2. location માંથી state મેળવો
     const location = useLocation();
     const defaultPlan = location.state?.selectedPlan || "";
 
@@ -28,7 +24,6 @@ function Contact() {
             joiningDate: formData.get("joiningDate"),
             workoutTime: formData.get("workoutTime"),
             goal: formData.get("goal"),
-            // 3. પ્લાનનો ડેટા પણ સેવ કરો
             plan: formData.get("plan"),
             currentWeight: formData.get("currentWeight"),
             targetWeight: formData.get("targetWeight"),
@@ -43,18 +38,11 @@ function Contact() {
         alert("તમારો મેસેજ સફળતાપૂર્વક મોકલાઈ ગયો છે! અમે ટૂંક સમયમાં તમારો સંપર્ક કરીશું.");
     };
 
-    useEffect(() => {
-        AOS.init({
-            duration: 500,
-            once: true,
-        });
-    }, []);
-
     return (
-        <section className="contact-section">
+        <section className="contact-section" style={{ overflowX: "hidden" }}>
             <motion.div
                 className="contact-card"
-                initial={{ opacity: 0, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
                     duration: 0.5,
@@ -62,12 +50,12 @@ function Contact() {
                 }}
             >
                 <h2 data-aos="fade-down">START YOUR FITNESS JOURNEY</h2>
-                <p className="contact-subtitle">
+                <p className="contact-subtitle" data-aos="fade-up" data-aos-delay="50">
                     Join Sanatan Fitness and transform yourself.
                 </p>
 
                 <form ref={form} onSubmit={handleFormSubmit}>
-                    <div className="row">
+                    <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="input-box">
                             <input type="text" name="firstName" required />
                             <label>First Name</label>
@@ -79,17 +67,17 @@ function Contact() {
                         </div>
                     </div>
 
-                    <div className="input-box">
+                    <div className="input-box" data-aos="fade-up" data-aos-delay="150">
                         <input type="email" name="email" required />
                         <label>Email Address</label>
                     </div>
 
-                    <div className="input-box">
+                    <div className="input-box" data-aos="fade-up" data-aos-delay="150">
                         <input type="tel" name="mobile" required />
                         <label>Mobile Number</label>
                     </div>
 
-                    <div className="row">
+                    <div className="row" data-aos="fade-up" data-aos-delay="200">
                         <div className="input-box">
                             <span className="field-title">Date of Birth</span>
                             <input type="date" name="dob" required />
@@ -101,13 +89,12 @@ function Contact() {
                         </div>
                     </div>
 
-                    <div className="input-box">
+                    <div className="input-box" data-aos="fade-up" data-aos-delay="200">
                         <span className="field-title">Preferred Workout Time</span>
                         <input type="time" name="workoutTime" required />
                     </div>
 
-                    {/* 4. અહીં નવું Plan Selection Dropdown ઉમેરેલ છે */}
-                    <div className="row">
+                    <div className="row" data-aos="fade-up" data-aos-delay="250">
                         <select name="plan" required defaultValue={defaultPlan}>
                             <option value="" disabled>Select Membership Plan</option>
                             <option value="Monthly Plan">Monthly Plan</option>
@@ -124,7 +111,7 @@ function Contact() {
                         </select>
                     </div>
 
-                    <div className="row">
+                    <div className="row" data-aos="fade-up" data-aos-delay="250">
                         <select name="goal" required defaultValue="">
                             <option value="" disabled>Fitness Goal</option>
                             <option value="Weight Loss">Weight Loss</option>
@@ -134,7 +121,7 @@ function Contact() {
                         </select>
                     </div>
 
-                    <div className="row">
+                    <div className="row" data-aos="fade-up" data-aos-delay="300">
                         <div className="input-box">
                             <input type="number" name="currentWeight" required />
                             <label>Current Weight (kg)</label>
@@ -146,33 +133,33 @@ function Contact() {
                         </div>
                     </div>
 
-                    <div className="input-box">
+                    <div className="input-box" data-aos="fade-up" data-aos-delay="300">
                         <textarea name="message" rows="5" required></textarea>
                         <label>Tell us about your fitness goals...</label>
                     </div>
 
-                    <button type="submit" className="c-btn">
+                    <button type="submit" className="c-btn" data-aos="zoom-in" data-aos-delay="350">
                         JOIN NOW
                     </button>
                 </form>
 
                 <div className="contact-info">
-                    <div className="info-box">
+                    <div className="info-box" data-aos="zoom-in" data-aos-delay="100">
                         <h3>📍 Address</h3>
                         <p>Your Gym Address Here</p>
                     </div>
 
-                    <div className="info-box">
+                    <div className="info-box" data-aos="zoom-in" data-aos-delay="150">
                         <h3>📞 Phone</h3>
                         <p>+91 98765 43210</p>
                     </div>
 
-                    <div className="info-box">
+                    <div className="info-box" data-aos="zoom-in" data-aos-delay="200">
                         <h3>📧 Email</h3>
                         <p>info@sanatanfitness.com</p>
                     </div>
 
-                    <div className="info-box">
+                    <div className="info-box" data-aos="zoom-in" data-aos-delay="250">
                         <h3>🕒 Gym Hours</h3>
                         <p>Mon - Sat : 5 AM - 11 PM</p>
                     </div>
@@ -183,4 +170,3 @@ function Contact() {
 }
 
 export default Contact;
-

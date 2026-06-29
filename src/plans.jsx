@@ -1,8 +1,20 @@
+import React, { useEffect } from "react";
 import "./plans.css";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Required for AOS animations
 
 function Plans() {
     const navigate = useNavigate();
+
+    // Initialize AOS when the component mounts
+    useEffect(() => {
+        AOS.init({
+            duration: 800, // Slightly faster duration for snappy card pop-ups
+            once: false,
+            offset: 100,
+        });
+    }, []);
 
     const plans = [
         {
@@ -53,13 +65,18 @@ function Plans() {
     ];
 
     return (
-        <section className="plans-section">
-            <h1>MEMBERSHIP PLANS</h1>
+        <section className="plans-section" style={{ overflowX: "hidden" }}>
+            {/* Animating the main heading dropping in from above */}
+            <h1 data-aos="fade-down">MEMBERSHIP PLANS</h1>
 
             <div className="plans-container">
                 {plans.map((plan, index) => (
-                    <div className="plan-card" key={index}>
-
+                    <div 
+                        className="plan-card" 
+                        key={index}
+                        data-aos="fade-up" // Cards slide up
+                        data-aos-delay={index * 150} // Staggers each card by 150ms based on its index
+                    >
                         {plan.popular && (
                             <span className="popular-badge">
                                 🔥 Most Popular
@@ -79,7 +96,6 @@ function Plans() {
                         <button onClick={() => navigate("/contact", { state: { selectedPlan: plan.name } })}>
                             Join Now
                         </button>
-
                     </div>
                 ))}
             </div>
