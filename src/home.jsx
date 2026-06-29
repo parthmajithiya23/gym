@@ -437,7 +437,7 @@ function Home() {
                         </Link>
                     </div>
 
-                    <div className="service-card" data-aos="zoom-in-up" data data-aos-delay="200">
+                    <div className="service-card" data-aos="zoom-in-up" data-aos-delay="200">
                         <Link to="/cardio-training">
                             <img src={crd} alt="Cardio Training" />
                             <div className="icon">❤️</div>
@@ -449,7 +449,7 @@ function Home() {
                         </Link>
                     </div>
 
-                    <div className="service-card" data-aos="zoom-in-up" data data-aos-delay="300">
+                    <div className="service-card" data-aos="zoom-in-up" data-aos-delay="300">
                         <Link to="/functional-fitness">
                             <img src={fnc} alt="Functional-Fitness" />
                             <div className="icon">🏃</div>
@@ -461,7 +461,7 @@ function Home() {
                         </Link>
                     </div>
 
-                    <div className="service-card" data-aos="zoom-in-up" data data-aos-delay="400">
+                    <div className="service-card" data-aos="zoom-in-up" data-aos-delay="400">
                         <Link to="/yoga-meditation">
                             <img src={yoga} alt="Yoga & Meditation" />
                             <div className="icon">🧘</div>
@@ -473,7 +473,7 @@ function Home() {
                         </Link>
                     </div>
 
-                    <div className="service-card" data-aos="zoom-in-up" data data-aos-delay="500">
+                    <div className="service-card" data-aos="zoom-in-up" data-aos-delay="500">
                         <Link to="/diet-plan">
                             <img src={diet} alt="Diet Plan" />
                             <div className="icon">🥗</div>
